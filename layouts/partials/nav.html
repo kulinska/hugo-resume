@@ -13,11 +13,11 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="{{ "#about" | relURL }}">{{ i18n "about" }}</a>
+				<a class="nav-link js-scroll-trigger" href="{{ if ne $.Language.Lang $.Site.Params.defaultContentLanguage }}/{{ $.Language.Lang }}{{ end }}/#about">{{ i18n "about" }}</a>
 			</li>
 			{{ range .Site.Params.sections }}
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="/#{{.}}">{{ . | i18n }}</a>
+				<a class="nav-link js-scroll-trigger" href="{{ if ne $.Language.Lang $.Site.Params.defaultContentLanguage }}/{{ $.Language.Lang }}{{ end }}/#{{ . }}">{{ . | i18n }}</a>
 			</li>
 			{{ end }}
 			{{ if .Site.Params.showContact}}
