@@ -36,7 +36,7 @@
     <noscript><link rel="stylesheet" href="{{ "css/resume-override.css" | absURL }}"></noscript>
   {{ hugo.Generator }}
   {{ block "headfiles" . }}
-   <!-- pl;aceholder -->
+   <!-- placeholder -->
   {{ end }}
 </head>
 <body id="page-top">
@@ -45,8 +45,12 @@
     {{ block "main" . }}
       {{ .Content }}
     {{ end }}
-    <section><span style="color: #999999;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
-      {{ with $.GitInfo }}{{ with $.Site.Params.gitCommitPrefix }} | <span style="color: #999999;;">Page content generated from commit: <a href="{{ . }}/{{ $.GitInfo.AbbreviatedHash }}" title="log: {{ $.GitInfo.Subject }}">{{ $.GitInfo.AbbreviatedHash }}</a>{{ end }}{{end}}
+    <section>
+      {{ with .GitInfo }}
+        <span style="color: #999999;;">Page content generated from commit: <a href="{{ site.Params.repoURL }}/commit/{{ .AbbreviatedHash }}" title="log: {{ .Subject }}">{{ $.GitInfo.AbbreviatedHash }}</a>
+        on {{ .CommitDate.Format "2006-01-02" }}
+        </span>
+      {{ end }}
     </section>
   </div>
   <!-- Bootstrap core JavaScript -->
